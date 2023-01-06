@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-/* eslint-disable import/extensions */
 /* eslint-disable no-console */
 import { Command } from 'commander';
 import genDiff from '../src/index.js';
@@ -26,6 +25,3 @@ program.action((filepath1, filepath2) => {
 });
 
 program.parse();
-
-// eslint-disable-next-line max-len
-// node bin/gendiff.js -f 11 /home/deus-ex-m/projects/frontend-project-46/__fixtures__/file1.json __fixtures__/file2.json
