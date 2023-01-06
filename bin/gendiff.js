@@ -14,14 +14,7 @@ program
 
 program.action((filepath1, filepath2) => {
   const options = program.opts();
-  let format;
-  if (options.format) {
-    format = options.format;
-  } else {
-    format = 'json';
-  }
-  const result = genDiff(filepath1, filepath2, format);
-  console.log(result);
+  console.log(genDiff(filepath1, filepath2, options.format));
 });
 
 program.parse();
