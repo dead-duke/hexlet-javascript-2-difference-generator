@@ -11,5 +11,8 @@
         "sourceType": "module"
     },
     "rules": {
+        "settings": {
+            "import/extensions": [".js", ".jsx", ".ts", ".tsx"]
+        }
     }
 }
