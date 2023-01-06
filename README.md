@@ -8,3 +8,5 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/74cd35462a7c58d57ee6/test_coverage)](https://codeclimate.com/github/deus-ex-m/frontend-project-46/test_coverage)
 ### gendiff step 3:
 [![asciicast](https://asciinema.org/a/YgHU6eyLslxSEMkl3JnRTp5Am.svg)](https://asciinema.org/a/YgHU6eyLslxSEMkl3JnRTp5Am)
+### gendiff step 5:
+[![asciicast](https://asciinema.org/a/vzfNbDxrbHxjSb9qivwy22sbO.svg)](https://asciinema.org/a/vzfNbDxrbHxjSb9qivwy22sbO)
