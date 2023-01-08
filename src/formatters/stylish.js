@@ -24,11 +24,7 @@ const stylish = (data, depth = 1) => {
     }
   }
 
-  if (depth === 1) {
-    result += '}';
-  } else {
-    result += `${'  '.repeat(depth - 1)}}`;
-  }
+  result += `${'  '.repeat(depth - 1)}}`;
 
   return result;
 };
