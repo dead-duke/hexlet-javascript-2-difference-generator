@@ -10,3 +10,5 @@
 [![asciicast](https://asciinema.org/a/YgHU6eyLslxSEMkl3JnRTp5Am.svg)](https://asciinema.org/a/YgHU6eyLslxSEMkl3JnRTp5Am)
 ### gendiff step 5:
 [![asciicast](https://asciinema.org/a/vzfNbDxrbHxjSb9qivwy22sbO.svg)](https://asciinema.org/a/vzfNbDxrbHxjSb9qivwy22sbO)
+### gendiff step 6:
+[![asciicast](https://asciinema.org/a/CY0De7IMpVP3Jtge1qfAlqeJt.svg)](https://asciinema.org/a/CY0De7IMpVP3Jtge1qfAlqeJt)
