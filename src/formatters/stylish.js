@@ -1,30 +1,30 @@
 import _ from 'lodash';
 
-const stylish = (data, depth = 1) => {
+const getState = (type) => {
+  switch (type) {
+    case 'removed':
+      return '- ';
+    case 'added':
+      return '+ ';
+    default:
+      return '  ';
+  }
+};
+
+const stylish = (data, indent = 0) => {
   let result = '{\n';
   for (let i = 0; i < data.length; i += 1) {
     const { key, content, type } = data[i];
-    let info = '  '.repeat(depth);
-    switch (type) {
-      case 'removed':
-        info += '- ';
-        break;
-      case 'added':
-        info += '+ ';
-        break;
-      default:
-        info += '  ';
-        break;
-    }
+    const state = '  '.repeat(indent + 1) + getState(type);
 
     if (_.isObject(content)) {
-      result += `${info}${key}: ${stylish(content, depth + 2)}\n`;
+      result += `${state}${key}: ${stylish(content, indent + 2)}\n`;
     } else {
-      result += `${info}${key}: ${content}\n`;
+      result += `${state}${key}: ${content}\n`;
     }
   }
 
-  result += `${'  '.repeat(depth - 1)}}`;
+  result += `${'  '.repeat(indent)}}`;
 
   return result;
 };
