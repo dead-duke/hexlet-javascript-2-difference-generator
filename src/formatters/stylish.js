@@ -5,14 +5,16 @@ const stylish = (data, depth = 1) => {
   for (let i = 0; i < data.length; i += 1) {
     const { key, content, type } = data[i];
     let info = '  '.repeat(depth);
-    if (type === 'removed') {
-      info += '- ';
-    }
-    if (type === 'added') {
-      info += '+ ';
-    }
-    if (type === 'unchanged' || type === 'nested') {
-      info += '  ';
+    switch (type) {
+      case 'removed':
+        info += '- ';
+        break;
+      case 'added':
+        info += '+ ';
+        break;
+      default:
+        info += '  ';
+        break;
     }
 
     if (_.isObject(content)) {
