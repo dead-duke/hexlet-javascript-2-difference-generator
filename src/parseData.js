@@ -20,7 +20,7 @@ const getData = (currentPath) => {
       return yaml.load(data);
     }
     default: {
-      throw new Error('Неподдерживаемый формат файлов'); // test
+      throw new Error('Неподдерживаемый формат файлов');
     }
   }
 };
