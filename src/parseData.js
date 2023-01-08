@@ -2,25 +2,29 @@ import path from 'path';
 import yaml from 'js-yaml';
 import fs from 'fs';
 
-const getData = (filePath) => {
-  const format = path.extname(filePath);
-  const rawData = fs.readFileSync(filePath);
-  switch (format) {
+const getData = (currentPath) => {
+  const validPath = path.resolve(currentPath);
+  const inputFormat = path.extname(validPath);
+  try {
+    fs.readFileSync(validPath, 'utf8');
+  } catch {
+    throw new Error('По указаномму пути нет файла или директории');
+  }
+  const data = fs.readFileSync(validPath, 'utf8');
+  switch (inputFormat) {
     case '.json': {
-      const data = JSON.parse(rawData);
-      return data;
+      return JSON.parse(data);
     }
     case '.yml':
     case '.yaml': {
-      const data = yaml.load(rawData);
-      return data;
+      return yaml.load(data);
     }
     default: {
-      throw new Error('Неподдерживаемый формат файлов');
+      throw new Error('Неподдерживаемый формат файлов'); // test
     }
   }
 };
 
-const parseData = (paths) => paths.map((currentPath) => getData(currentPath));
+const parseData = (...paths) => paths.map((currentPath) => getData(currentPath));
 
 export default parseData;

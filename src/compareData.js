@@ -1,29 +1,44 @@
 import _ from 'lodash';
 
 const compareData = (data) => {
-  const [firstObj, secondObj] = data;
-  const result = [];
+  const iter = (obj1, obj2) => {
+    const keys1 = Object.keys(obj1);
+    const keys2 = Object.keys(obj2);
+    const allKeys = _.sortBy(_.uniq([...keys1, ...keys2]));
 
-  Object.entries(firstObj).forEach(([key, value]) => {
-    if (_.has(secondObj, key)) {
-      if (secondObj[key] === value) {
-        result.push([key, ' ', value]);
-      } else {
-        result.push([key, 'a', value]);
-        result.push([key, 'b', secondObj[key]]);
+    return allKeys.flatMap((key) => {
+      let value1 = obj1[key];
+      let value2 = obj2[key];
+
+      if (_.isObject(value1) && _.isObject(value2)) {
+        return [{ key, content: iter(value1, value2), type: 'nested' }];
       }
-    } else {
-      result.push([key, 'a', value]);
-    }
-  });
 
-  Object.entries(secondObj).forEach(([key, value]) => {
-    if (!_.has(firstObj, key)) {
-      result.push([key, 'b', value]);
-    }
-  });
+      if (_.isObject(value1)) {
+        value1 = iter(value1, value1);
+      }
+      if (_.isObject(value2)) {
+        value2 = iter(value2, value2);
+      }
 
-  return _.sortBy(result);
+      if (!_.has(obj1, key)) {
+        return [{ key, content: value2, type: 'added' }];
+      }
+      if (!_.has(obj2, key)) {
+        return [{ key, content: value1, type: 'removed' }];
+      }
+      if (value1 === value2) {
+        return [{ key, content: value1, type: 'unchanged' }];
+      }
+
+      return [
+        { key, content: value1, type: 'removed' },
+        { key, content: value2, type: 'added' },
+      ];
+    });
+  };
+
+  return iter(...data);
 };
 
 export default compareData;
