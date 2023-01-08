@@ -9,6 +9,7 @@ const compareData = (data) => {
     return allKeys.flatMap((key) => {
       let value1 = obj1[key];
       let value2 = obj2[key];
+      const result = [];
 
       if (_.isObject(value1) && _.isObject(value2)) {
         return [{ key, content: iter(value1, value2), type: 'nested' }];
@@ -22,19 +23,17 @@ const compareData = (data) => {
       }
 
       if (!_.has(obj1, key)) {
-        return [{ key, content: value2, type: 'added' }];
-      }
-      if (!_.has(obj2, key)) {
-        return [{ key, content: value1, type: 'removed' }];
-      }
-      if (value1 === value2) {
-        return [{ key, content: value1, type: 'unchanged' }];
+        result.push({ key, content: value2, type: 'added' });
+      } else if (!_.has(obj2, key)) {
+        result.push({ key, content: value1, type: 'removed' });
+      } else if (value1 === value2) {
+        result.push({ key, content: value1, type: 'unchanged' });
+      } else {
+        result.push({ key, content: value1, type: 'removed' });
+        result.push({ key, content: value2, type: 'added' });
       }
 
-      return [
-        { key, content: value1, type: 'removed' },
-        { key, content: value2, type: 'added' },
-      ];
+      return result;
     });
   };
 
