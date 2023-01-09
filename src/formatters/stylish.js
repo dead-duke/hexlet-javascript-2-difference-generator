@@ -3,8 +3,10 @@ import _ from 'lodash';
 const getState = (type) => {
   switch (type) {
     case 'removed':
+    case 'updated/removed':
       return '- ';
     case 'added':
+    case 'updated':
       return '+ ';
     default:
       return '  ';
