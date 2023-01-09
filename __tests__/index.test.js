@@ -1,6 +1,11 @@
 import genDiff from '../src/index.js';
 
-const nestMatch = `{
+const path1 = '__fixtures__/file1.json';
+const path2 = '__fixtures__/file2.json';
+const path3 = '__fixtures__/file3.yml';
+const path4 = '__fixtures__/file4.yaml';
+
+const stylishResult = `{
     common: {
       + follow: false
         setting1: Value 1
@@ -45,25 +50,48 @@ const nestMatch = `{
     }
 }`;
 
-const path1 = '__fixtures__/file1.json';
-const path2 = '__fixtures__/file2.json';
-const path3 = '__fixtures__/file3.yml';
-const path4 = '__fixtures__/file4.yaml';
-
-test('genDiff nest JSON', () => {
-  expect(genDiff(path1, path2, 'stylish')).toEqual(nestMatch);
+test('genDiff nest JSON stylish', () => {
+  expect(genDiff(path1, path2, 'stylish')).toEqual(stylishResult);
 });
 
-test('genDiff nest YML', () => {
-  expect(genDiff(path3, path4, 'stylish')).toEqual(nestMatch);
+test('genDiff nest YML stylish', () => {
+  expect(genDiff(path3, path4, 'stylish')).toEqual(stylishResult);
 });
 
-test('genDiff nest JSON/YML', () => {
-  expect(genDiff(path1, path4, 'stylish')).toEqual(nestMatch);
+test('genDiff nest JSON/YML stylish', () => {
+  expect(genDiff(path1, path4, 'stylish')).toEqual(stylishResult);
 });
 
-test('genDiff nest YML/JSON', () => {
-  expect(genDiff(path3, path2, 'stylish')).toEqual(nestMatch);
+test('genDiff nest YML/JSON stylish', () => {
+  expect(genDiff(path3, path2, 'stylish')).toEqual(stylishResult);
+});
+
+const palinResult = `Property 'common.follow' was added with value: false
+Property 'common.setting2' was removed
+Property 'common.setting3' was updated. From true to null
+Property 'common.setting4' was added with value: 'blah blah'
+Property 'common.setting5' was added with value: [complex value]
+Property 'common.setting6.doge.wow' was updated. From '' to 'so much'
+Property 'common.setting6.ops' was added with value: 'vops'
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group1.nest' was updated. From [complex value] to 'str'
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]`;
+
+test('genDiff nest JSON plain', () => {
+  expect(genDiff(path1, path2, 'plain')).toEqual(palinResult);
+});
+
+test('genDiff nest YML plain', () => {
+  expect(genDiff(path3, path4, 'plain')).toEqual(palinResult);
+});
+
+test('genDiff nest JSON/YML plain', () => {
+  expect(genDiff(path1, path4, 'plain')).toEqual(palinResult);
+});
+
+test('genDiff nest YML/JSON plain', () => {
+  expect(genDiff(path3, path2, 'plain')).toEqual(palinResult);
 });
 
 describe('errors', () => {
