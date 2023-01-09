@@ -23,8 +23,13 @@ const compareData = (data) => {
       } else if (value1 === value2) {
         result.push({ key, content: value1, type: 'unchanged' });
       } else {
-        result.push({ key, content: value1, type: 'removed' });
-        result.push({ key, content: value2, type: 'added' });
+        result.push({ key, content: value1, type: 'updated/removed' });
+        result.push({
+          key,
+          content: value2,
+          prevContent: value1,
+          type: 'updated',
+        });
       }
 
       return result;
