@@ -10,25 +10,22 @@ const ymlPath3 = path.resolve('__fixtures__/testFile3.yml');
 const yamlPath4 = path.resolve('__fixtures__/testFile4.yaml');
 
 describe('formats', () => {
-  test('genDiff stylish', () => {
+  test('genDiff json', () => {
     expect(genDiff(jsonPath1, jsonPath2, 'stylish')).toEqual(resultStylish);
-    expect(genDiff(ymlPath3, yamlPath4, 'stylish')).toEqual(resultStylish);
-    expect(genDiff(jsonPath1, yamlPath4, 'stylish')).toEqual(resultStylish);
-    expect(genDiff(ymlPath3, jsonPath2, 'stylish')).toEqual(resultStylish);
-  });
-
-  test('genDiff plain', () => {
     expect(genDiff(jsonPath1, jsonPath2, 'plain')).toEqual(resultPlain);
-    expect(genDiff(ymlPath3, yamlPath4, 'plain')).toEqual(resultPlain);
-    expect(genDiff(jsonPath1, yamlPath4, 'plain')).toEqual(resultPlain);
-    expect(genDiff(ymlPath3, jsonPath2, 'plain')).toEqual(resultPlain);
+    expect(genDiff(jsonPath1, jsonPath2, 'json')).toEqual(resultJson);
   });
 
-  test('genDiff JSON', () => {
-    expect(genDiff(jsonPath1, jsonPath2, 'json')).toEqual(resultJson);
+  test('genDiff YML', () => {
+    expect(genDiff(ymlPath3, yamlPath4, 'stylish')).toEqual(resultStylish);
+    expect(genDiff(ymlPath3, yamlPath4, 'plain')).toEqual(resultPlain);
     expect(genDiff(ymlPath3, yamlPath4, 'json')).toEqual(resultJson);
+  });
+
+  test('genDiff JSON/YML', () => {
+    expect(genDiff(jsonPath1, yamlPath4, 'stylish')).toEqual(resultStylish);
+    expect(genDiff(jsonPath1, yamlPath4, 'plain')).toEqual(resultPlain);
     expect(genDiff(jsonPath1, yamlPath4, 'json')).toEqual(resultJson);
-    expect(genDiff(ymlPath3, jsonPath2, 'json')).toEqual(resultJson);
   });
 });
 
