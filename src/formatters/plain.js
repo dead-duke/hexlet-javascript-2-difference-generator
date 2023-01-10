@@ -11,38 +11,31 @@ const formatContent = (content) => {
 };
 
 const plain = (data) => {
-  let result = '';
-  const iter = (currentData, property) => {
-    currentData.forEach(({
+  const iter = (obj, property = '') => {
+    const result = obj.reduce((accum, {
       key, content, prevContent, type,
     }) => {
-      if (type !== 'nested') {
-        const currentContent = formatContent(content);
-        const prevCurrentContent = formatContent(prevContent);
-        const currentProperty = `${property}.${key}`.slice(1);
-        switch (type) {
-          case 'added':
-            result += `Property '${currentProperty}'`;
-            result += ` was ${type} with value: ${currentContent}\n`;
-            break;
-          case 'updated':
-            result += `Property '${currentProperty}'`;
-            result += ` was ${type}. From ${prevCurrentContent} to ${currentContent}\n`;
-            break;
-          case 'removed':
-            result += `Property '${currentProperty}' was ${type}\n`;
-            break;
-          default:
-            break;
-        }
-      } else {
-        iter(content, `${property}.${key}`);
+      if (type === 'nested') {
+        return `${accum}${iter(content, `${property}.${key}`)}`;
       }
-    });
-  };
-  iter(data, '');
+      const currentContent = formatContent(content);
+      const prevCurrentContent = formatContent(prevContent);
+      const currentProperty = `${property}.${key}`.slice(1);
+      switch (type) {
+        case 'added':
+          return `${accum}Property '${currentProperty}' was ${type} with value: ${currentContent}\n`;
+        case 'updated':
+          return `${accum}Property '${currentProperty}' was ${type}. From ${prevCurrentContent} to ${currentContent}\n`;
+        case 'removed':
+          return `${accum}Property '${currentProperty}' was ${type}\n`;
+        default:
+          return accum;
+      }
+    }, '');
 
-  return result.slice(0, -1);
+    return result;
+  };
+  return iter(data).slice(0, -1);
 };
 
 export default plain;
