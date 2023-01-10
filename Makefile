@@ -10,11 +10,14 @@ lint:
 help:
 	node bin/gendiff.js -h
 
-run:
-	node bin/gendiff.js /home/deus-ex-m/projects/frontend-project-46/__fixtures__/file1.json __fixtures__/file2.json
+run-stylish:
+	node bin/gendiff.js /home/deus-ex-m/projects/frontend-project-46/__fixtures__/testFile1.json __fixtures__/testFile2.json
 
-run2:
-	node bin/gendiff.js -f plain /home/deus-ex-m/projects/frontend-project-46/__fixtures__/file3.yml __fixtures__/file4.yaml
+run-plain:
+	node bin/gendiff.js -f plain /home/deus-ex-m/projects/frontend-project-46/__fixtures__/testFile3.yml __fixtures__/testFile4.yaml
+
+run-json:
+	node bin/gendiff.js -f json /home/deus-ex-m/projects/frontend-project-46/__fixtures__/testFile1.json __fixtures__/testFile2.json
 
 test:
 	npx jest
