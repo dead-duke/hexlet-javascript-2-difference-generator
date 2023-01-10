@@ -1,5 +1,12 @@
 import _ from 'lodash';
 
+const getUpdatedContent = (content, indent, f) => {
+  if (_.isObject(content)) {
+    return f(content, indent + 2);
+  }
+  return content;
+};
+
 const getState = (type) => {
   switch (type) {
     case 'removed':
@@ -23,11 +30,8 @@ const stylish = (data, indent = 0) => {
       return `${accum}${state}${key}: ${stylish(content, indent + 2)}\n`;
     }
     if (type === 'updated') {
-      const currentPrevContent = _.isObject(prevContent)
-        ? stylish(prevContent, indent + 2)
-        : prevContent;
       return (
-        `${accum}${state.replace('+/-', '-')}${key}: ${currentPrevContent}\n`
+        `${accum}${state.replace('+/-', '-')}${key}: ${getUpdatedContent(prevContent, indent, stylish)}\n`
         + `${state.replace('+/-', '+')}${key}: ${content}\n`
       );
     }

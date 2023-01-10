@@ -10,6 +10,22 @@ const formatContent = (content) => {
   return content;
 };
 
+const getFormatString = (mainStr, property, key, type, content, prevContent) => {
+  const currentContent = formatContent(content);
+  const prevCurrentContent = formatContent(prevContent);
+  const currentProperty = `${property}.${key}`.slice(1);
+  switch (type) {
+    case 'added':
+      return `${mainStr}Property '${currentProperty}' was ${type} with value: ${currentContent}\n`;
+    case 'updated':
+      return `${mainStr}Property '${currentProperty}' was ${type}. From ${prevCurrentContent} to ${currentContent}\n`;
+    case 'removed':
+      return `${mainStr}Property '${currentProperty}' was ${type}\n`;
+    default:
+      return mainStr;
+  }
+};
+
 const plain = (data) => {
   const iter = (obj, property = '') => {
     const result = obj.reduce((accum, {
@@ -18,19 +34,7 @@ const plain = (data) => {
       if (type === 'nested') {
         return `${accum}${iter(content, `${property}.${key}`)}`;
       }
-      const currentContent = formatContent(content);
-      const prevCurrentContent = formatContent(prevContent);
-      const currentProperty = `${property}.${key}`.slice(1);
-      switch (type) {
-        case 'added':
-          return `${accum}Property '${currentProperty}' was ${type} with value: ${currentContent}\n`;
-        case 'updated':
-          return `${accum}Property '${currentProperty}' was ${type}. From ${prevCurrentContent} to ${currentContent}\n`;
-        case 'removed':
-          return `${accum}Property '${currentProperty}' was ${type}\n`;
-        default:
-          return accum;
-      }
+      return getFormatString(accum, property, key, type, content, prevContent);
     }, '');
 
     return result;
