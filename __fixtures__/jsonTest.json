@@ -21,7 +21,13 @@
       {
         "type": "updated",
         "key": "setting3",
-        "content": null,
+        "content": [
+          {
+            "type": "unchanged",
+            "key": "key",
+            "content": "value"
+          }
+        ],
         "prevContent": true
       },
       {
