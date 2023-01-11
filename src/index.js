@@ -4,7 +4,8 @@ import formatter from './formatters/index.js';
 
 const genDiff = (path1, path2, outputFormat = 'stylish') => {
   try {
-    const [data1, data2] = parseData(path1, path2);
+    const data1 = parseData(path1);
+    const data2 = parseData(path2);
     const comparedData = compareData(data1, data2);
     return formatter(comparedData, outputFormat);
   } catch (err) {

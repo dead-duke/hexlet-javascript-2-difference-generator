@@ -2,7 +2,7 @@ import path from 'path';
 import yaml from 'js-yaml';
 import fs from 'fs';
 
-const getData = (currentPath) => {
+const parseData = (currentPath) => {
   const validPath = path.resolve(currentPath);
   const inputFormat = path.extname(validPath);
   try {
@@ -24,7 +24,5 @@ const getData = (currentPath) => {
     }
   }
 };
-
-const parseData = (...paths) => paths.map((currentPath) => getData(currentPath));
 
 export default parseData;
