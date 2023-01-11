@@ -1,5 +1,5 @@
 ### Hexlet tests and linter status:
-[![Actions Status](https://github.com/deus-ex-m/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/deus-ex-m/frontend-project-46/actions)
+[![hexlet-check](https://github.com/deus-ex-m/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg?branch=main)](https://github.com/deus-ex-m/frontend-project-46/actions/workflows/hexlet-check.yml)
 ### Node CI tests and linter status:
 [![Node CI](https://github.com/deus-ex-m/frontend-project-46/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/deus-ex-m/frontend-project-46/actions/workflows/nodejs.yml)
 ### maintainability status:
