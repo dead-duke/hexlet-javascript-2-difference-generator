@@ -20,33 +20,19 @@ const getUpdatedContent = (content, indent, f) => {
   return content;
 };
 
-const getFormatString = (mainStr, state, key, content, prevContent, indent, f) => (
-  `${mainStr}${state.replace('+/-', '-')}`
-  + `${key}: ${getUpdatedContent(prevContent, indent, f)}\n`
-  + `${state.replace('+/-', '+')}${key}: ${content}\n`
-);
-
 const stylish = (data, indent = 0) => {
   const result = data.reduce((accum, {
     key, content, prevContent, type,
   }) => {
     const state = '  '.repeat(indent + 1) + getState(type);
-
-    if (_.isObject(content)) {
-      return `${accum}${state}${key}: ${stylish(content, indent + 2)}\n`;
-    }
     if (type === 'updated') {
-      return getFormatString(
-        accum,
-        state,
-        key,
-        content,
-        prevContent,
-        indent,
-        stylish,
+      return (
+        `${accum}${state.replace('+/-', '-')}`
+        + `${key}: ${getUpdatedContent(prevContent, indent, stylish)}\n`
+        + `${state.replace('+/-', '+')}${key}: ${getUpdatedContent(content, indent, stylish)}\n`
       );
     }
-    return `${accum}${state}${key}: ${content}\n`;
+    return `${accum}${state}${key}: ${getUpdatedContent(content, indent, stylish)}\n`;
   }, '');
   return `{\n${result}${'  '.repeat(indent)}}`;
 };
