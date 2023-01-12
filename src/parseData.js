@@ -5,11 +5,6 @@ import fs from 'fs';
 const parseData = (currentPath) => {
   const validPath = path.resolve(currentPath);
   const inputFormat = path.extname(validPath);
-  try {
-    fs.readFileSync(validPath, 'utf8');
-  } catch {
-    throw new Error('По указаномму пути нет файла или директории');
-  }
   const data = fs.readFileSync(validPath, 'utf8');
   switch (inputFormat) {
     case '.json': {
@@ -20,7 +15,7 @@ const parseData = (currentPath) => {
       return yaml.load(data);
     }
     default: {
-      throw new Error('Неподдерживаемый формат файлов');
+      throw new Error('Unsupported file format');
     }
   }
 };

@@ -14,7 +14,7 @@ const formatter = (data, format) => {
       return json(data);
     }
     default:
-      throw new Error('Неподдерживаемый формат вывода'); // test
+      throw new Error('Unsupported output format'); // test
   }
 };
 
