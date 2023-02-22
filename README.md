@@ -24,6 +24,6 @@ CLI applications to compare two files. The result of the work is a report of dif
 ## Work examples
 
 * Flat files, result formatted as 'stylish': https://asciinema.org/a/549699
-* Nest files, result formatted as 'stylish': https://asciinema.org/a/550274
-* Nest files, result formatted as 'plain': https://asciinema.org/a/550511
-* Nest files, result formatted as 'json': https://asciinema.org/a/550831
+* Nest files, result formatted as 'stylish': https://asciinema.org/a/561869
+* Nest files, result formatted as 'plain': https://asciinema.org/a/561870
+* Nest files, result formatted as 'json': https://asciinema.org/a/561871
