@@ -6,8 +6,6 @@ const getState = (type) => {
       return '-';
     case 'added':
       return '+';
-    case 'updated':
-      return '';
     default:
       return ' ';
   }
