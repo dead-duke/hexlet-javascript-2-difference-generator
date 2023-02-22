@@ -11,12 +11,12 @@ const getState = (type) => {
   }
 };
 
-const getStylish = (obj, indent) => {
+const getFormattedObject = (obj, indent) => {
   const newIndent = `${indent}    `;
   const result = Object.entries(obj).reduce((accum, item) => {
     const value = item[1];
     if (_.isObject(value)) {
-      const newValue = getStylish(value, newIndent);
+      const newValue = getFormattedObject(value, newIndent);
       return `${accum}${newIndent}${item[0]}: ${newValue}\n`;
     }
     return `${accum}${newIndent}${item[0]}: ${value}\n`;
@@ -26,7 +26,7 @@ const getStylish = (obj, indent) => {
 
 const getFormattedValue = (value, indent) => {
   if (_.isObject(value)) {
-    return getStylish(value, `${indent}    `);
+    return getFormattedObject(value, `${indent}    `);
   }
   return value;
 };
