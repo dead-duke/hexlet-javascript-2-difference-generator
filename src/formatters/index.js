@@ -1,21 +1,21 @@
-import stylish from './stylish.js';
-import plain from './plain.js';
-import json from './json.js';
+import getStylishFormat from './getStylishFormat.js';
+import getPlainFormat from './getPlainFormat.js';
+import getJsonFormat from './getJsonFormat.js';
 
-const formatter = (data, format) => {
+const getFormattedData = (data, format) => {
   switch (format) {
     case 'stylish': {
-      return stylish(data);
+      return getStylishFormat(data);
     }
     case 'plain': {
-      return plain(data);
+      return getPlainFormat(data);
     }
     case 'json': {
-      return json(data);
+      return getJsonFormat(data);
     }
     default:
-      throw new Error('Unsupported output format'); // test
+      throw new Error('Unsupported output format');
   }
 };
 
-export default formatter;
+export default getFormattedData;
