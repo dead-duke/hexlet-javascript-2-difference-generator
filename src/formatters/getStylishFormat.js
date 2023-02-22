@@ -10,6 +10,7 @@ const getState = (type) => {
       return ' ';
   }
 };
+
 const getStylish = (obj, indent) => {
   const newIndent = `${indent}    `;
   const result = Object.entries(obj).reduce((accum, item) => {
