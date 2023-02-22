@@ -39,7 +39,7 @@ describe('errors', () => {
     );
   });
   test('input format', () => {
-    expect(genDiff('__fixtures__/extendTestFile.js', filePath1, 'stylish')).toEqual(
+    expect(genDiff('__fixtures__/extensionTestFile.js', filePath1, 'stylish')).toEqual(
       'Unsupported file format',
     );
   });
