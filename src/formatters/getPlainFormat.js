@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const formatContent = (content) => {
+const getFormattedValue = (content) => {
   if (_.isObject(content)) {
     return '[complex value]';
   }
@@ -10,9 +10,9 @@ const formatContent = (content) => {
   return content;
 };
 
-const getFormattedString = (key, type, value, previusValue, property) => {
-  const currentContent = formatContent(value);
-  const previusCurrentContent = formatContent(previusValue);
+const getFormattedLine = (key, type, value, previusValue, property) => {
+  const currentContent = getFormattedValue(value);
+  const previusCurrentContent = getFormattedValue(previusValue);
   const currentProperty = `${property}${key}`;
   switch (type) {
     case 'added':
@@ -35,7 +35,7 @@ const getPlainFormat = (data) => {
       const newProperty = `${property}${item[0]}.`;
       return accum + iter(children, newProperty);
     }
-    return accum + getFormattedString(item[0], type, value, previusValue, property);
+    return accum + getFormattedLine(item[0], type, value, previusValue, property);
   }, '');
   return iter(data).slice(0, -1);
 };

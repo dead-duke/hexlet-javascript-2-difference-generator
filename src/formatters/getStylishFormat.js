@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const getState = (type) => {
+const getSign = (type) => {
   switch (type) {
     case 'removed':
       return '-';
@@ -44,7 +44,7 @@ const getStylishFormat = (data, indent = '') => {
         return `${accum}${indent}  - ${item[0]}: ${getFormattedValue(previusValue, indent)}\n`
               + `${indent}  + ${item[0]}: ${getFormattedValue(value, indent)}\n`;
       default:
-        return `${accum}${indent}  ${getState(type)} ${item[0]}: ${getFormattedValue(value, indent)}\n`;
+        return `${accum}${indent}  ${getSign(type)} ${item[0]}: ${getFormattedValue(value, indent)}\n`;
     }
   }, '');
   return `{\n${result}${indent}}`;
