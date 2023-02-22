@@ -17,11 +17,11 @@ test:
 test-coverage:
 	npx jest --coverage
 
-run-stylish:
+stylish-run:
 	node bin/gendiff.js /home/deus-ex-m/projects/frontend-project-46/__fixtures__/testFile1.json __fixtures__/testFile2.json
 
-run-plain:
+plain-run:
 	node bin/gendiff.js -f plain /home/deus-ex-m/projects/frontend-project-46/__fixtures__/testFile1.yml __fixtures__/testFile2.yml
 
-run-json:
+json-run:
 	node bin/gendiff.js -f json /home/deus-ex-m/projects/frontend-project-46/__fixtures__/testFile1.json __fixtures__/testFile2.json
