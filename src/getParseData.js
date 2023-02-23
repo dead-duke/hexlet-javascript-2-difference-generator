@@ -2,7 +2,7 @@ import path from 'path';
 import yaml from 'js-yaml';
 import fs from 'fs';
 
-const parseData = (currentPath) => {
+const getParseData = (currentPath) => {
   const validPath = path.resolve(currentPath);
   const inputFormat = path.extname(validPath);
   const data = fs.readFileSync(validPath, 'utf8');
@@ -20,4 +20,4 @@ const parseData = (currentPath) => {
   }
 };
 
-export default parseData;
+export default getParseData;
