@@ -1,5 +1,5 @@
 import path from 'path';
-import genDiff from '../src/index.js';
+import genDiff from '../index.js';
 import resultStylish from '../__fixtures__/results/stylish.js';
 import resultPlain from '../__fixtures__/results/plain.js';
 import resultJson from '../__fixtures__/results/json.js';

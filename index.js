@@ -1,6 +1,6 @@
-import getParseData from './getParseData.js';
-import getComparedData from './getComparedData.js';
-import getFormattedData from './formatters/getFormattedData.js';
+import getParseData from './src/getParseData.js';
+import getComparedData from './src/getComparedData.js';
+import getFormattedData from './src/formatters/getFormattedData.js';
 
 const genDiff = (path1, path2, outputFormat = 'stylish') => {
   try {
