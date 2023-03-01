@@ -1,14 +1,6 @@
 import path from 'path';
+import fs from 'fs';
 import genDiff from '../index.js';
-import resultStylish from '../__fixtures__/results/stylish.js';
-import resultPlain from '../__fixtures__/results/plain.js';
-import resultJson from '../__fixtures__/results/json.js';
-
-const results = {
-  stylish: resultStylish,
-  plain: resultPlain,
-  json: resultJson,
-};
 
 const testCombinations = [
   ['yml', 'stylish'],
@@ -24,7 +16,7 @@ describe('formats', () => {
     const filePath1 = path.resolve(`__fixtures__/testFile1.${extension}`);
     const filePath2 = path.resolve(`__fixtures__/testFile2.${extension}`);
     const actual = genDiff(filePath1, filePath2, format);
-    const expected = results[format];
+    const expected = fs.readFileSync(`__fixtures__/results/${format}.txt`, 'utf-8');
     expect(actual).toEqual(expected);
   });
 });

@@ -1,4 +1,4 @@
-const resultJson = `{
+{
     "common": {
         "type": "nested",
         "children": {
@@ -97,6 +97,4 @@ const resultJson = `{
             "fee": 100500
         }
     }
-}`;
-
-export default resultJson;
+}
