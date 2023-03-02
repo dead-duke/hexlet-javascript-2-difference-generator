@@ -23,7 +23,11 @@ CLI applications to compare two files. The result of the work is a report of dif
 
 ## Work examples
 
-* Flat files, result formatted as 'stylish': https://asciinema.org/a/549699
-* Nest files, result formatted as 'stylish': https://asciinema.org/a/561869
-* Nest files, result formatted as 'plain': https://asciinema.org/a/561870
-* Nest files, result formatted as 'json': https://asciinema.org/a/561871
+* Flat files, result formatted as 'stylish'
+[![asciicast](https://asciinema.org/a/549699.svg)](https://asciinema.org/a/549699)
+* Nest files, result formatted as 'stylish'
+[![asciicast](https://asciinema.org/a/561869.svg)](https://asciinema.org/a/561869)
+* Nest files, result formatted as 'plain'
+[![asciicast](https://asciinema.org/a/561870.svg)](https://asciinema.org/a/561870)
+* Nest files, result formatted as 'json'
+[![asciicast](https://asciinema.org/a/561871.svg)](https://asciinema.org/a/561871)
