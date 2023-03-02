@@ -14,7 +14,7 @@ const getFormattedData = (data, format) => {
       return getJsonFormat(data);
     }
     default:
-      throw new Error('Unsupported output format');
+      throw new Error(`Unsupported output format - ${format}`);
   }
 };
 
