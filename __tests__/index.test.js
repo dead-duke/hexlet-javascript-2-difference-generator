@@ -27,12 +27,12 @@ const filePath2 = path.resolve('__fixtures__/testFile2.json');
 describe('errors', () => {
   test('output format', () => {
     expect(genDiff(filePath1, filePath2, 'bad output format')).toEqual(
-      'Unsupported output format',
+      'Unsupported output format - bad output format',
     );
   });
   test('input format', () => {
     expect(genDiff('__fixtures__/extensionTestFile.js', filePath1, 'stylish')).toEqual(
-      'Unsupported file format',
+      'Unsupported file format - .js',
     );
   });
 });
