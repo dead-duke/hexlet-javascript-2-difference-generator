@@ -1,8 +1,8 @@
 import _ from 'lodash';
 
 const getComparedData = (obj1, obj2) => {
-  const allKeys = _.union(Object.keys(obj1), Object.keys(obj2));
-  const uniqKeys = _.uniq(allKeys);
+  const unionKeys = _.union(Object.keys(obj1), Object.keys(obj2));
+  const uniqKeys = _.uniq(unionKeys);
   return _.sortBy(uniqKeys).reduce((accum, key) => {
     const value1 = obj1[key];
     const value2 = obj2[key];
