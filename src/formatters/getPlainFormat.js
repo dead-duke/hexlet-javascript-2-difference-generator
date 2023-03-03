@@ -1,43 +1,37 @@
 import _ from 'lodash';
 
-const getFormattedValue = (content) => {
-  if (_.isObject(content)) {
+const getFormattedValue = (value) => {
+  if (_.isObject(value)) {
     return '[complex value]';
   }
-  if (typeof content === 'string') {
-    return `'${content}'`;
+  if (typeof value === 'string') {
+    return `'${value}'`;
   }
-  return content;
-};
-
-const getFormattedLine = (key, type, value, previusValue, property) => {
-  const currentContent = getFormattedValue(value);
-  const previusCurrentContent = getFormattedValue(previusValue);
-  const currentProperty = `${property}${key}`;
-  switch (type) {
-    case 'added':
-      return `Property '${currentProperty}' was ${type} with value: ${currentContent}\n`;
-    case 'updated':
-      return `Property '${currentProperty}' was ${type}. From ${previusCurrentContent} to ${currentContent}\n`;
-    case 'removed':
-      return `Property '${currentProperty}' was ${type}\n`;
-    default:
-      return '';
-  }
+  return value;
 };
 
 const getPlainFormat = (data) => {
   const iter = (obj, property = '') => Object.entries(obj).reduce((accum, item) => {
-    const {
-      value, previusValue, type, children,
-    } = item[1];
-    if (type === 'nested') {
-      const newProperty = `${property}${item[0]}.`;
-      return accum + iter(children, newProperty);
+    const [groupKey, group] = item;
+    const value = getFormattedValue(group.value);
+    const previusValue = getFormattedValue(group.previusValue);
+    const currentProperty = `${property}${groupKey}`;
+
+    switch (group.type) {
+      case 'nested':
+        return [...accum, iter(group.children, `${currentProperty}.`).join('')];
+      case 'added':
+        return [...accum, `Property '${currentProperty}' was ${group.type} with value: ${value}\n`];
+      case 'removed':
+        return [...accum, `Property '${currentProperty}' was ${group.type}\n`];
+      case 'updated':
+        return [...accum, `Property '${currentProperty}' was ${group.type}. From ${previusValue} to ${value}\n`];
+      default:
+        return accum;
     }
-    return accum + getFormattedLine(item[0], type, value, previusValue, property);
-  }, '');
-  return iter(data).slice(0, -1);
+  }, []);
+
+  return iter(data).join('').trim();
 };
 
 export default getPlainFormat;

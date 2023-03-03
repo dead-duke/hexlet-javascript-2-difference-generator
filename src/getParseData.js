@@ -6,6 +6,7 @@ const getParseData = (currentPath) => {
   const validPath = path.resolve(process.cwd(), currentPath);
   const inputFormat = path.extname(validPath);
   const data = fs.readFileSync(validPath, 'utf8');
+
   switch (inputFormat) {
     case '.json': {
       return JSON.parse(data);

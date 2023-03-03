@@ -1,53 +1,50 @@
 import _ from 'lodash';
 
-const getSign = (type) => {
-  switch (type) {
-    case 'removed':
-      return '-';
-    case 'added':
-      return '+';
-    default:
-      return ' ';
-  }
-};
+const getNewIndent = (indent) => `${indent}${' '.repeat(4)}`;
 
 const getFormattedObject = (obj, indent) => {
-  const newIndent = `${indent}    `;
+  const newIndent = getNewIndent(indent);
   const result = Object.entries(obj).reduce((accum, item) => {
-    const value = item[1];
+    const [key, value] = item;
+
     if (_.isObject(value)) {
-      const newValue = getFormattedObject(value, newIndent);
-      return `${accum}${newIndent}${item[0]}: ${newValue}\n`;
+      const group = getFormattedObject(value, newIndent);
+      return [...accum, `${newIndent}${key}: ${group}\n`];
     }
-    return `${accum}${newIndent}${item[0]}: ${value}\n`;
-  }, '');
-  return `{\n${result}${indent}}`;
+    return [...accum, `${newIndent}${key}: ${value}\n`];
+  }, []);
+
+  return `{\n${result.join('')}${indent}}`;
 };
 
 const getFormattedValue = (value, indent) => {
   if (_.isObject(value)) {
-    return getFormattedObject(value, `${indent}    `);
+    return getFormattedObject(value, getNewIndent(indent));
   }
   return value;
 };
 
 const getStylishFormat = (data, indent = '') => {
   const result = Object.entries(data).reduce((accum, item) => {
-    const {
-      value, previusValue, type, children,
-    } = item[1];
-    const newIndent = `${indent}    `;
-    switch (type) {
+    const [groupKey, group] = item;
+    const newIndent = getNewIndent(indent);
+
+    switch (group.type) {
       case 'nested':
-        return `${accum}${newIndent}${item[0]}: ${getStylishFormat(children, newIndent)}\n`;
-      case 'updated':
-        return `${accum}${indent}  ${getSign('removed')} ${item[0]}: ${getFormattedValue(previusValue, indent)}\n`
-              + `${indent}  ${getSign('added')} ${item[0]}: ${getFormattedValue(value, indent)}\n`;
+        return [...accum, `${newIndent}${groupKey}: ${getStylishFormat(group.children, newIndent)}\n`];
+      case 'added':
+        return [...accum, `${indent}  + ${groupKey}: ${getFormattedValue(group.value, indent)}\n`];
+      case 'removed':
+        return [...accum, `${indent}  - ${groupKey}: ${getFormattedValue(group.value, indent)}\n`];
+      case 'unchanged':
+        return [...accum, `${indent}    ${groupKey}: ${getFormattedValue(group.value, indent)}\n`];
       default:
-        return `${accum}${indent}  ${getSign(type)} ${item[0]}: ${getFormattedValue(value, indent)}\n`;
+        return [...accum, `${indent}  - ${groupKey}: ${getFormattedValue(group.previusValue, indent)}\n`,
+          `${indent}  + ${groupKey}: ${getFormattedValue(group.value, indent)}\n`];
     }
-  }, '');
-  return `{\n${result}${indent}}`;
+  }, []);
+
+  return `{\n${result.join('')}${indent}}`;
 };
 
 export default getStylishFormat;
