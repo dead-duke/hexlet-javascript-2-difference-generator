@@ -6,8 +6,6 @@ const getSign = (type) => {
       return '-';
     case 'added':
       return '+';
-    case 'updated':
-      return ['-', '+'];
     default:
       return ' ';
   }
@@ -39,15 +37,14 @@ const getStylishFormat = (data, indent = '') => {
       value, previusValue, type, children,
     } = item[1];
     const newIndent = `${indent}    `;
-    const sign = getSign(type);
     switch (type) {
       case 'nested':
         return `${accum}${newIndent}${item[0]}: ${getStylishFormat(children, newIndent)}\n`;
       case 'updated':
-        return `${accum}${indent}  ${sign[0]} ${item[0]}: ${getFormattedValue(previusValue, indent)}\n`
-              + `${indent}  ${sign[1]} ${item[0]}: ${getFormattedValue(value, indent)}\n`;
+        return `${accum}${indent}  ${getSign('removed')} ${item[0]}: ${getFormattedValue(previusValue, indent)}\n`
+              + `${indent}  ${getSign('added')} ${item[0]}: ${getFormattedValue(value, indent)}\n`;
       default:
-        return `${accum}${indent}  ${sign} ${item[0]}: ${getFormattedValue(value, indent)}\n`;
+        return `${accum}${indent}  ${getSign(type)} ${item[0]}: ${getFormattedValue(value, indent)}\n`;
     }
   }, '');
   return `{\n${result}${indent}}`;
