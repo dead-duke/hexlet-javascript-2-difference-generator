@@ -7,12 +7,12 @@ const getFormattedValue = (value) => {
   if (typeof value === 'string') {
     return `'${value}'`;
   }
+
   return value;
 };
 
 const getPlainFormat = (data) => {
-  const iter = (obj, property = '') => Object.entries(obj).reduce((accum, item) => {
-    const [groupKey, group] = item;
+  const iter = (obj, property = '') => Object.entries(obj).reduce((accum, [groupKey, group]) => {
     const value = getFormattedValue(group.value);
     const previusValue = getFormattedValue(group.previusValue);
     const currentProperty = `${property}${groupKey}`;
