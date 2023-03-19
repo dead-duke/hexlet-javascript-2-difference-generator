@@ -31,7 +31,7 @@ const getPlainFormat = (data) => {
     }
   }, []);
 
-  return iter(data).join('').trim();
+  return iter(data).join('').trimEnd();
 };
 
 export default getPlainFormat;
