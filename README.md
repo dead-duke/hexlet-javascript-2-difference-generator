@@ -17,7 +17,7 @@ CLI application for compare two files. The result of the work is a report of dif
 ## Installation and launch
 
 * `make install` install
-* `make help` information about application
+* `gendiff -h` information about application
 * `gendiff <file1> <file2>` default launch
 * `gendiff -f [format] <file1> <file2>` launch with user format
 
