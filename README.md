@@ -1,11 +1,10 @@
 
 # Hexlet: "Difference Generator"
 
-[![hexlet-check](https://github.com/deus-ex-m/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg?branch=main)](https://github.com/deus-ex-m/frontend-project-46/actions/workflows/hexlet-check.yml)
-[![Node CI](https://github.com/deus-ex-m/frontend-project-46/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/deus-ex-m/frontend-project-46/actions/workflows/nodejs.yml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/74cd35462a7c58d57ee6/maintainability)](https://codeclimate.com/github/deus-ex-m/frontend-project-46/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/74cd35462a7c58d57ee6/test_coverage)](https://codeclimate.com/github/deus-ex-m/frontend-project-46/test_coverage)
-
+[![hexlet-check](https://github.com/grim-vagabond/hexlet-javascript-2-difference-generator/actions/workflows/hexlet-check.yml/badge.svg?branch=main)](https://github.com/grim-vagabond/hexlet-javascript-2-difference-generator/actions/workflows/hexlet-check.yml)
+[![Node CI](https://github.com/grim-vagabond/hexlet-javascript-2-difference-generator/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/grim-vagabond/hexlet-javascript-2-difference-generator/actions/workflows/nodejs.yml)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e2fc6100cc90fb097171/maintainability)](https://codeclimate.com/github/grim-vagabond/hexlet-javascript-2-difference-generator/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e2fc6100cc90fb097171/test_coverage)](https://codeclimate.com/github/grim-vagabond/hexlet-javascript-2-difference-generator/test_coverage)
 
 CLI application for compare two files. The result of the work is a report of differences in files. Work with JSON, YML, YAML files, result formats 'stylish', 'plain', 'json'.
 
@@ -23,11 +22,7 @@ CLI application for compare two files. The result of the work is a report of dif
 
 ## Work examples
 
-* Flat files, result formatted as 'stylish'
-[![asciicast](https://asciinema.org/a/549699.svg)](https://asciinema.org/a/549699)
-* Nest files, result formatted as 'stylish'
-[![asciicast](https://asciinema.org/a/561869.svg)](https://asciinema.org/a/561869)
-* Nest files, result formatted as 'plain'
-[![asciicast](https://asciinema.org/a/561870.svg)](https://asciinema.org/a/561870)
-* Nest files, result formatted as 'json'
-[![asciicast](https://asciinema.org/a/561871.svg)](https://asciinema.org/a/561871)
+* [Flat files, result formatted as 'stylish'](https://asciinema.org/a/549699)
+* [Nest files, result formatted as 'stylish'](https://asciinema.org/a/561869)
+* [Nest files, result formatted as 'plain'](https://asciinema.org/a/561870)
+* [Nest files, result formatted as 'json'](https://asciinema.org/a/561871)
