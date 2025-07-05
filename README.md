@@ -1,10 +1,13 @@
 
 # Hexlet: "Difference Generator"
 
-[![hexlet-check](https://github.com/grim-vagabond/hexlet-javascript-2-difference-generator/actions/workflows/hexlet-check.yml/badge.svg?branch=main)](https://github.com/grim-vagabond/hexlet-javascript-2-difference-generator/actions/workflows/hexlet-check.yml)
-[![Node CI](https://github.com/grim-vagabond/hexlet-javascript-2-difference-generator/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/grim-vagabond/hexlet-javascript-2-difference-generator/actions/workflows/nodejs.yml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/e2fc6100cc90fb097171/maintainability)](https://codeclimate.com/github/grim-vagabond/hexlet-javascript-2-difference-generator/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/e2fc6100cc90fb097171/test_coverage)](https://codeclimate.com/github/grim-vagabond/hexlet-javascript-2-difference-generator/test_coverage)
+[![hexlet-check](https://github.com/dead-duke/hexlet-javascript-2-difference-generator/actions/workflows/hexlet-check.yml/badge.svg?branch=main)](https://github.com/dead-duke/hexlet-javascript-2-difference-generator/actions/workflows/hexlet-check.yml)
+[![Node CI](https://github.com/dead-duke/hexlet-javascript-2-difference-generator/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/dead-duke/hexlet-javascript-2-difference-generator/actions/workflows/nodejs.yml)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=dead-duke_hexlet-javascript-2-difference-generator&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=dead-duke_hexlet-javascript-2-difference-generator)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=dead-duke_hexlet-javascript-2-difference-generator&metric=bugs)](https://sonarcloud.io/summary/new_code?id=dead-duke_hexlet-javascript-2-difference-generator)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=dead-duke_hexlet-javascript-2-difference-generator&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=dead-duke_hexlet-javascript-2-difference-generator)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=dead-duke_hexlet-javascript-2-difference-generator&metric=coverage)](https://sonarcloud.io/summary/new_code?id=dead-duke_hexlet-javascript-2-difference-generator)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=dead-duke_hexlet-javascript-2-difference-generator&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=dead-duke_hexlet-javascript-2-difference-generator)
 
 CLI application for compare two files. The result of the work is a report of differences in files. Work with JSON, YML, YAML files, result formats 'stylish', 'plain', 'json'.
 
